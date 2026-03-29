@@ -1,16 +1,16 @@
 /**
- * Traveling Salesman Problem Solver - Fixed Version
- * Changing start city does NOT change the graph or route
+ * Traveling Salesman Problem Solver - Fixed Layouts
+ * Circle and Grid patterns now work correctly
  */
 
-// City layouts
+// City layouts - FIXED VERSION
 const CITY_LAYOUTS = {
   random: function (count) {
     const cities = [];
     for (let i = 0; i < count; i++) {
       cities.push({
-        x: 80 + Math.random() * 520,
-        y: 60 + Math.random() * 380,
+        x: 100 + Math.random() * 500,
+        y: 70 + Math.random() * 380,
       });
     }
     return cities;
@@ -20,33 +20,43 @@ const CITY_LAYOUTS = {
     const cities = [];
     const centerX = 325;
     const centerY = 250;
-    const radius = 180;
+    const radius = 200;
+
+    // Place cities evenly around the circle
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * Math.PI * 2;
-      cities.push({
-        x: centerX + Math.cos(angle) * radius,
-        y: centerY + Math.sin(angle) * radius,
-      });
+      const x = centerX + Math.cos(angle) * radius;
+      const y = centerY + Math.sin(angle) * radius;
+      cities.push({ x: x, y: y });
     }
     return cities;
   },
 
   grid: function (count) {
     const cities = [];
+    // Calculate grid dimensions
     const cols = Math.ceil(Math.sqrt(count));
     const rows = Math.ceil(count / cols);
-    const spacingX = 480 / cols;
-    const spacingY = 380 / rows;
-    const startX = 80;
-    const startY = 60;
 
-    for (let i = 0; i < count; i++) {
-      const row = Math.floor(i / cols);
-      const col = i % cols;
-      cities.push({
-        x: startX + col * spacingX,
-        y: startY + row * spacingY,
-      });
+    // Spacing between cities
+    const startX = 100;
+    const endX = 550;
+    const startY = 80;
+    const endY = 420;
+
+    const spacingX = (endX - startX) / (cols - 1);
+    const spacingY = (endY - startY) / (rows - 1);
+
+    let cityIndex = 0;
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        if (cityIndex < count) {
+          const x = startX + col * spacingX;
+          const y = startY + row * spacingY;
+          cities.push({ x: x, y: y });
+          cityIndex++;
+        }
+      }
     }
     return cities;
   },
@@ -55,17 +65,17 @@ const CITY_LAYOUTS = {
     const cities = [];
     const clusters = 3;
     const clusterCenters = [
-      { x: 150, y: 130 },
-      { x: 500, y: 130 },
-      { x: 325, y: 350 },
+      { x: 180, y: 150 },
+      { x: 470, y: 150 },
+      { x: 325, y: 370 },
     ];
 
     for (let i = 0; i < count; i++) {
       const cluster = i % clusters;
       const center = clusterCenters[cluster];
       cities.push({
-        x: center.x + (Math.random() - 0.5) * 80,
-        y: center.y + (Math.random() - 0.5) * 80,
+        x: center.x + (Math.random() - 0.5) * 70,
+        y: center.y + (Math.random() - 0.5) * 70,
       });
     }
     return cities;
@@ -415,7 +425,7 @@ function generateNewCities() {
   if (statusEl) statusEl.textContent = "Ready";
 
   updateRouteInfo(currentRoute);
-  addLog("Generated new random cities", "info");
+  addLog("Generated " + layout + " layout with " + count + " cities", "info");
 }
 
 function generateRandomRoute() {
