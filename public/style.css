@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #4a1525 0%, #6b1f38 100%);
+  background: linear-gradient(135deg, #c45e90 0%, #d97aaa 100%);
   min-height: 100vh;
   padding: 20px;
 }
@@ -14,14 +14,14 @@ body {
 .app {
   max-width: 1400px;
   margin: 0 auto;
-  background: #fff0f3;
+  background: #facde5;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
 .header {
-  background: linear-gradient(135deg, #6b1f38 0%, #d4738a 100%);
+  background: linear-gradient(135deg, #F18dbc 0%, #f7b9d7 100%);
   color: white;
   padding: 20px 30px;
   text-align: center;
@@ -46,8 +46,8 @@ body {
 
 .left-column {
   padding: 20px;
-  background: #fff0f3;
-  border-right: 1px solid #f0c0cd;
+  background: #facde5;
+  border-right: 1px solid #f7b9d7;
 }
 
 .map-container {
@@ -90,7 +90,7 @@ canvas {
 .control-group label {
   font-size: 11px;
   font-weight: 600;
-  color: #b85c7a;
+  color: #c45e90;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -98,7 +98,7 @@ canvas {
 select {
   padding: 8px 12px;
   font-size: 13px;
-  border: 2px solid #f0c0cd;
+  border: 2px solid #f7b9d7;
   border-radius: 8px;
   background: white;
   cursor: pointer;
@@ -107,17 +107,17 @@ select {
 }
 
 select:hover {
-  border-color: #d4738a;
+  border-color: #F18dbc;
 }
 
 select:focus {
   outline: none;
-  border-color: #d4738a;
+  border-color: #F18dbc;
 }
 
 .note {
   font-size: 10px;
-  color: #b85c7a;
+  color: #c45e90;
   margin-top: 4px;
   display: block;
 }
@@ -142,22 +142,23 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #d4738a, #c05a73);
+  background: linear-gradient(135deg, #F18dbc, #d97aaa);
   color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 115, 138, 0.4);
+  box-shadow: 0 4px 12px rgba(241, 141, 188, 0.4);
 }
 
 .btn-secondary {
-  background: #f0c0cd;
-  color: #6b1f38;
+  background: #f7b9d7;
+  color: #a0476e;
 }
 
 .btn-secondary:hover {
-  background: #e8a0b5;
+  background: #F18dbc;
+  color: white;
   transform: translateY(-1px);
 }
 
@@ -173,7 +174,7 @@ button:disabled {
   gap: 12px;
   margin-bottom: 20px;
   padding: 15px;
-  background: #fff0f3;
+  background: #facde5;
   border-radius: 12px;
 }
 
@@ -183,7 +184,7 @@ button:disabled {
 
 .stat-label {
   font-size: 10px;
-  color: #b85c7a;
+  color: #c45e90;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 5px;
@@ -192,7 +193,7 @@ button:disabled {
 .stat-value {
   font-size: 18px;
   font-weight: bold;
-  color: #6b1f38;
+  color: #a0476e;
 }
 
 .exploration-bar-container {
@@ -204,14 +205,14 @@ button:disabled {
   justify-content: space-between;
   font-size: 12px;
   font-weight: 600;
-  color: #6b1f38;
+  color: #a0476e;
   margin-bottom: 8px;
 }
 
 .exploration-track {
   width: 100%;
   height: 8px;
-  background: #f0c0cd;
+  background: #f7b9d7;
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 8px;
@@ -227,11 +228,11 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   font-size: 10px;
-  color: #b85c7a;
+  color: #c45e90;
 }
 
 .route-info {
-  background: #fff0f3;
+  background: #facde5;
   border-radius: 12px;
   padding: 15px;
   margin-bottom: 15px;
@@ -241,7 +242,7 @@ button:disabled {
   display: flex;
   justify-content: space-between;
   font-weight: 600;
-  color: #6b1f38;
+  color: #a0476e;
   margin-bottom: 10px;
   font-size: 13px;
 }
@@ -265,14 +266,14 @@ button:disabled {
 }
 
 .how-it-works {
-  background: linear-gradient(135deg, #fff0f3 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #facde5 0%, #ffffff 100%);
   border-radius: 12px;
   padding: 20px;
-  border: 1px solid #f0c0cd;
+  border: 1px solid #f7b9d7;
 }
 
 .how-it-works h3 {
-  color: #6b1f38;
+  color: #a0476e;
   margin-bottom: 20px;
   font-size: 18px;
   text-align: center;
@@ -300,7 +301,7 @@ button:disabled {
 .step-number {
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, #d4738a, #c05a73);
+  background: linear-gradient(135deg, #F18dbc, #d97aaa);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -318,13 +319,13 @@ button:disabled {
 .step-content strong {
   display: block;
   font-size: 13px;
-  color: #6b1f38;
+  color: #a0476e;
   margin-bottom: 4px;
 }
 
 .step-content p {
   font-size: 11px;
-  color: #b85c7a;
+  color: #c45e90;
   line-height: 1.4;
 }
 
@@ -334,13 +335,13 @@ button:disabled {
   border-radius: 10px;
   padding: 15px;
   margin-bottom: 15px;
-  border-left: 4px solid #d4738a;
+  border-left: 4px solid #F18dbc;
 }
 
 .explanation-box h4,
 .formula-box h4 {
   font-size: 13px;
-  color: #6b1f38;
+  color: #a0476e;
   margin-bottom: 10px;
 }
 
@@ -353,38 +354,38 @@ button:disabled {
 
 .example {
   font-style: italic;
-  color: #b85c7a;
+  color: #c45e90;
   margin-top: 8px;
   padding-top: 8px;
-  border-top: 1px solid #f0c0cd;
+  border-top: 1px solid #f7b9d7;
 }
 
 .formula-box code {
   display: block;
-  background: #fff0f3;
+  background: #facde5;
   padding: 8px;
   border-radius: 6px;
   font-family: monospace;
   font-size: 11px;
   margin: 10px 0;
   text-align: center;
-  color: #6b1f38;
+  color: #a0476e;
 }
 
 .formula-box p {
   font-size: 11px;
-  color: #b85c7a;
+  color: #c45e90;
   margin-top: 8px;
 }
 
 .live-log {
-  background: #6b1f38;
+  background: #a0476e;
   border-radius: 12px;
   overflow: hidden;
 }
 
 .live-log h3 {
-  background: #4a1525;
+  background: #7d3357;
   color: white;
   padding: 12px 15px;
   font-size: 14px;
@@ -401,29 +402,29 @@ button:disabled {
 
 .log-entry {
   padding: 6px 0;
-  border-bottom: 1px solid #8b3a52;
-  color: #f0c0cd;
+  border-bottom: 1px solid #c45e90;
+  color: #facde5;
 }
 
 .log-entry.accept {
-  color: #e8a0b5;
+  color: #f7b9d7;
 }
 
 .log-entry.reject {
-  color: #f0c0cd;
+  color: #facde5;
 }
 
 .log-entry.info {
-  color: #d4738a;
+  color: #F18dbc;
 }
 
 .log-entry.success {
-  color: #e8a0b5;
+  color: #f7b9d7;
   font-weight: bold;
 }
 
 .log-entry.warning {
-  color: #f0c0cd;
+  color: #facde5;
 }
 
 .log-content::-webkit-scrollbar {
@@ -431,11 +432,11 @@ button:disabled {
 }
 
 .log-content::-webkit-scrollbar-track {
-  background: #4a1525;
+  background: #7d3357;
 }
 
 .log-content::-webkit-scrollbar-thumb {
-  background: #d4738a;
+  background: #F18dbc;
   border-radius: 3px;
 }
 
@@ -446,7 +447,7 @@ button:disabled {
 
   .left-column {
     border-right: none;
-    border-bottom: 1px solid #f0c0cd;
+    border-bottom: 1px solid #f7b9d7;
   }
 
   .control-row {
