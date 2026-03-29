@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traveling Salesman - Simulated Annealing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>Traveling Salesman Problem</h1>
+      <p>Simulated Annealing - Find the Shortest Tour That Returns to Start</p>
+    </div>
+
+    <div class="main-content">
+      <div class="left-column">
+        <div class="map-container">
+          <canvas id="map-canvas" width="650" height="500"></canvas>
+        </div>
+
+        <div class="controls-panel">
+          <div class="control-row">
+            <div class="control-group">
+              <label>City Layout</label>
+              <select id="city-layout">
+                <option value="random">Random Cities</option>
+                <option value="circle">Circle Pattern</option>
+                <option value="grid">Grid Pattern</option>
+                <option value="cluster">Clusters Pattern</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label>City Count</label>
+              <select id="city-count">
+                <option value="8">8 Cities</option>
+                <option value="10" selected>10 Cities</option>
+                <option value="12">12 Cities</option>
+                <option value="15">15 Cities</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label>Starting City</label>
+              <select id="start-city"></select>
+              <span class="note">(Salesman returns here)</span>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="solve-btn" class="btn-primary">Find Shortest Tour</button>
+            <button id="reset-btn" class="btn-secondary">New Cities</button>
+            <button id="random-btn" class="btn-secondary">Random Tour</button>
+            <button id="verify-btn" class="btn-info">Verify Tour</button>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-label">Iterations</div>
+              <div class="stat-value" id="iterations">0</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Tour Distance</div>
+              <div class="stat-value" id="distance">0</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Best Distance</div>
+              <div class="stat-value" id="best-distance">0</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Exploration</div>
+              <div class="stat-value" id="exploration">100%</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Status</div>
+              <div class="stat-value" id="status">Ready</div>
+            </div>
+          </div>
+
+          <div class="exploration-bar-container">
+            <div class="exploration-header">
+              <span>Exploration Level</span>
+              <span id="exploration-percent">100%</span>
+            </div>
+            <div class="exploration-track">
+              <div class="exploration-fill" id="exploration-fill" style="width: 100%"></div>
+            </div>
+            <div class="exploration-labels">
+              <span>Exploring (accepts bad tours)</span>
+              <span>Refining (only improvements)</span>
+            </div>
+          </div>
+
+          <div class="route-info">
+            <div class="route-header">
+              <span>Current Tour (returns to start)</span>
+              <span id="route-length"></span>
+            </div>
+            <div id="route-info" class="route-path">Click Find Shortest Tour to start</div>
+          </div>
+
+          <div class="distance-details">
+            <div class="distance-header">Distance Breakdown</div>
+            <div id="distance-details" class="distance-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="how-it-works">
+          <h3>How Simulated Annealing Works</h3>
+          
+          <div class="step-by-step">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <strong>Start with random tour</strong>
+                <p>Visit all cities in random order, return to start</p>
+              </div>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <strong>Calculate total tour distance</strong>
+                <p>Sum of all edges including return trip</p>
+              </div>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <strong>Make a small change</strong>
+                <p>Swap two cities in the route (keep start fixed)</p>
+              </div>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <strong>Decision rule</strong>
+                <p>Shorter tour -> Always accept</p>
+                <p>Longer tour -> Accept with probability e^(-increase/exploration)</p>
+              </div>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <strong>Reduce exploration</strong>
+                <p>Slowly decrease exploration level over time</p>
+              </div>
+            </div>
+            
+            <div class="step">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <strong>Repeat until optimized</strong>
+                <p>Continue until exploration reaches minimum</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="explanation-box">
+            <h4>Classic TSP Definition</h4>
+            <div class="explanation-text">
+              <p><strong>The Problem:</strong> "Given a list of cities and distances between them, what is the shortest possible route that visits each city exactly once and returns to the starting city?"</p>
+              <p class="example">The salesman starts at a city, visits all other cities once, and returns to the start - forming a complete loop.</p>
+            </div>
+          </div>
+
+          <div class="formula-box">
+            <h4>Tour Distance Calculation</h4>
+            <code>Total = Sum(distance[i][i+1]) + distance[last][first]</code>
+            <p>Includes the return trip to starting city</p>
+            <p>Red dashed line shows the return path</p>
+          </div>
+        </div>
+
+        <div class="live-log">
+          <h3>Optimization Log</h3>
+          <div id="log" class="log-content">
+            <div class="log-entry info">Ready to find shortest tour. Select starting city, then click Find Shortest Tour.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="solver.js"></script>
+</body>
+</html>
