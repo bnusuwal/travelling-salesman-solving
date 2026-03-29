@@ -27,12 +27,12 @@ Simulated Annealing is inspired by the process of annealing in metallurgy, where
 
 Instead of "temperature", we use "exploration level" to make it easier to understand:
 
-| Exploration Level | Behavior | Purpose |
-|------------------|----------|---------|
-| **High (100%)** | Accepts many bad routes | Explores widely, avoids getting stuck |
-| **Medium (50%)** | Sometimes accepts bad routes | Balances exploration and improvement |
-| **Low (10%)** | Rarely accepts bad routes | Refines the best route found |
-| **Very Low (1%)** | Only accepts improvements | Final optimization phase |
+| Exploration Level | Behavior                     | Purpose                               |
+| ----------------- | ---------------------------- | ------------------------------------- |
+| **High (100%)**   | Accepts many bad routes      | Explores widely, avoids getting stuck |
+| **Medium (50%)**  | Sometimes accepts bad routes | Balances exploration and improvement  |
+| **Low (10%)**     | Rarely accepts bad routes    | Refines the best route found          |
+| **Very Low (1%)** | Only accepts improvements    | Final optimization phase              |
 
 The exploration level starts at 100% and slowly decreases to 0% over thousands of iterations. This allows the algorithm to first explore many possible routes, then gradually focus on improving the best ones.
 
@@ -46,8 +46,6 @@ The exploration level starts at 100% and slowly decreases to 0% over thousands o
 
 - **Adjustable City Count:** 8 to 20 cities
 
-- **Animation Speed Control:** From instant to slow (watch each step)
-
 - **Real-time Visualization:** Watch the route evolve
 
 - **Detailed Logging:** Shows improvements and exploration level
@@ -57,6 +55,7 @@ The exploration level starts at 100% and slowly decreases to 0% over thousands o
 ## How to Run
 
 ### Prerequisites
+
 - Node.js installed on your computer
 - Modern web browser
 
@@ -65,3 +64,4 @@ The exploration level starts at 100% and slowly decreases to 0% over thousands o
 1. **Start the server:**
    ```bash
    node server.js
+   ```
