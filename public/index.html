@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Traveling Salesman - Simulated Annealing</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="app">
     <div class="header">
@@ -52,7 +54,6 @@
             <button id="solve-btn" class="btn-primary">Find Shortest Tour</button>
             <button id="reset-btn" class="btn-secondary">New Cities</button>
             <button id="random-btn" class="btn-secondary">Random Tour</button>
-            <button id="verify-btn" class="btn-info">Verify Tour</button>
           </div>
 
           <div class="stats-grid">
@@ -71,10 +72,6 @@
             <div class="stat-item">
               <div class="stat-label">Exploration</div>
               <div class="stat-value" id="exploration">100%</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-label">Status</div>
-              <div class="stat-value" id="status">Ready</div>
             </div>
           </div>
 
@@ -99,18 +96,13 @@
             </div>
             <div id="route-info" class="route-path">Click Find Shortest Tour to start</div>
           </div>
-
-          <div class="distance-details">
-            <div class="distance-header">Distance Breakdown</div>
-            <div id="distance-details" class="distance-list"></div>
-          </div>
         </div>
       </div>
 
       <div class="right-column">
         <div class="how-it-works">
           <h3>How Simulated Annealing Works</h3>
-          
+
           <div class="step-by-step">
             <div class="step">
               <div class="step-number">1</div>
@@ -119,7 +111,7 @@
                 <p>Visit all cities in random order, return to start</p>
               </div>
             </div>
-            
+
             <div class="step">
               <div class="step-number">2</div>
               <div class="step-content">
@@ -127,7 +119,7 @@
                 <p>Sum of all edges including return trip</p>
               </div>
             </div>
-            
+
             <div class="step">
               <div class="step-number">3</div>
               <div class="step-content">
@@ -135,7 +127,7 @@
                 <p>Swap two cities in the route (keep start fixed)</p>
               </div>
             </div>
-            
+
             <div class="step">
               <div class="step-number">4</div>
               <div class="step-content">
@@ -144,7 +136,7 @@
                 <p>Longer tour -> Accept with probability e^(-increase/exploration)</p>
               </div>
             </div>
-            
+
             <div class="step">
               <div class="step-number">5</div>
               <div class="step-content">
@@ -152,7 +144,7 @@
                 <p>Slowly decrease exploration level over time</p>
               </div>
             </div>
-            
+
             <div class="step">
               <div class="step-number">6</div>
               <div class="step-content">
@@ -165,8 +157,10 @@
           <div class="explanation-box">
             <h4>Classic TSP Definition</h4>
             <div class="explanation-text">
-              <p><strong>The Problem:</strong> "Given a list of cities and distances between them, what is the shortest possible route that visits each city exactly once and returns to the starting city?"</p>
-              <p class="example">The salesman starts at a city, visits all other cities once, and returns to the start - forming a complete loop.</p>
+              <p><strong>The Problem:</strong> "Given a list of cities and distances between them, what is the shortest
+                possible route that visits each city exactly once and returns to the starting city?"</p>
+              <p class="example">The salesman starts at a city, visits all other cities once, and returns to the start -
+                forming a complete loop.</p>
             </div>
           </div>
 
@@ -181,7 +175,8 @@
         <div class="live-log">
           <h3>Optimization Log</h3>
           <div id="log" class="log-content">
-            <div class="log-entry info">Ready to find shortest tour. Select starting city, then click Find Shortest Tour.</div>
+            <div class="log-entry info">Ready to find shortest tour. Select starting city, then click Find Shortest
+              Tour.</div>
           </div>
         </div>
       </div>
@@ -190,4 +185,5 @@
 
   <script src="solver.js"></script>
 </body>
+
 </html>
